@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Página 1</title>
+  <style>
+    /* Copia aquí los estilos del base.html o usa <link> a un CSS */
+    :root {
+      --primary-color: #0d6efd;
+      --secondary-color: #6c757d;
+      --bg-color: #f8f9fa;
+      --sidebar-width: 250px;
+      --header-height: 60px;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      background-color: var(--bg-color);
+    }
+
+    .header {
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      height: var(--header-height);
+      display: flex;
+      align-items: center;
+      padding: 0 2rem;
+      position: fixed;
+      top: 0;
+      left: var(--sidebar-width);
+      width: calc(100% - var(--sidebar-width));
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    .sidebar {
+      width: var(--sidebar-width);
+      height: 100vh;
+      background-color: #212529;
+      color: #fff;
+      position: fixed;
+      top: 0;
+      left: 0;
+      padding-top: 20px;
+      transition: all 0.3s ease;
+      z-index: 1001;
+    }
+
+    .sidebar-header {
+      padding: 0 1.5rem;
+      margin-bottom: 2rem;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .sidebar-nav a {
+      display: block;
+      color: #adb5bd;
+      text-decoration: none;
+      padding: 1rem 1.5rem;
+      transition: background-color 0.2s, color 0.2s;
+    }
+
+    .sidebar-nav a:hover,
+    .sidebar-nav a.active {
+      background-color: var(--primary-color);
+      color: #fff;
+    }
+
+    .main-content {
+      margin-left: var(--sidebar-width);
+      padding: calc(var(--header-height) + 2rem) 2rem 2rem 2rem;
+      transition: all 0.3s ease;
+    }
+  </style>
+</head>
+<body>
+  <nav class="sidebar">
+    <div class="sidebar-header">Ingeniería Web</div>
+    <div class="sidebar-nav">
+      <a href="menu.html" class="active">Inicio</a>
+    </div>
+  </nav>
+
+  <header class="header">
+    <span class="menu-toggle" onclick="toggleSidebar()">&#9776;</span>
+  </header>
+
+  <main class="main-content">
+    <h1>Bienvenido</h1>
+    <p>Este es el contenido de la Página 1 (antes {% block content %}).</p>
+  </main>
+
+  <script>
+    function toggleSidebar() {
+      document.body.classList.toggle("sidebar-collapsed");
+    }
+  </script>
+</body>
+</html>
